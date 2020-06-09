@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Dashboard" />
+
+    <item android:title="Shipments">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/shipment"
+            android:icon="@drawable/ic_shipment"
+            android:title="My Shipment" />
+
+<!--        <item-->
+<!--            android:id="@+id/request"-->
+<!--            android:icon="@drawable/ic_pickup_request"-->
+<!--            android:title="Pick Up Request" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/report"-->
+<!--            android:icon="@drawable/ic_report"-->
+<!--            android:title="Reports" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/billing"-->
+<!--            android:icon="@drawable/ic_money"-->
+<!--            android:title="Billings / Invoice" />-->
+
+        <item
+            android:id="@+id/my_account"
+            android:icon="@drawable/ic_my_account"
+            android:title="My Account" />
+
+<!--        <item-->
+<!--            android:id="@+id/settings"-->
+<!--            android:icon="@drawable/ic_settings"-->
+<!--            android:title="Settings" />-->
+
+        <item
+            android:id="@+id/how_it_works"
+            android:icon="@drawable/ic_help"
+            android:title="How it works ?" />
+
+        <item
+            android:id="@+id/shipping_calculator"
+            android:icon="@drawable/ic_shipping_calculator"
+            android:title="Shipping Calculator" />
+
+        <item
+            android:id="@+id/add_package"
+            android:icon="@drawable/ic_add"
+            android:title="Add Package" />
+
+        <item
+            android:id="@+id/sign_out"
+            android:icon="@drawable/ic_sign_out"
+            android:title="Sign Out " />
+
+    </group>
+    </item>
+
+
+
+
+
+
+
+</menu>

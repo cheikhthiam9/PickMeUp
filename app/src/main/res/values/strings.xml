@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Pick Me Up</string>
+    <string name="welcome_text">PICK ME UP</string>
+    <string name="slogan_text">"Don't move. We got it."</string>
+    <string name="get_started_text">Get Started</string>
+    <string name="email_placeholder">Email</string>
+    <string name="password_placeholder">Password</string>
+    <string name="login_text">LOGIN</string>
+    <string name="or_text">OR</string>
+    <string name="sign_in_text">SIGN IN</string>
+    <string name="create_account_text">CREATE ACCOUNT</string>
+    <string name="first_name_text">First Name</string>
+    <string name="last_name_text">Last Name</string>
+    <string name="retype_password_placeholder">Retype Password</string>
+    <string name="gender_text">Gender</string>
+    <string name="male_text">Male</string>
+    <string name="female_text">Female</string>
+    <string name="country_placeholder">Country</string>
+    <string name="city_placeholder">City</string>
+    <string name="phone_number_placeholder">Phone Number</string>
+    <string name="dashboard_text">DASHBOARD</string>
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+    <string name="create_pre_alert_text">Create PreAlert</string>
+    <string name="pick_up_request_text">Creaate Pick Up</string>
+</resources>

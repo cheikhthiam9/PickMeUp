@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!--Header of the navigation drawer-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="@color/colorPrimary"
+        android:gravity="bottom"
+        android:padding="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <ImageView
+            android:id="@+id/profile_pic_nav_header"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+    android:id="@+id/first_name_nav_header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="-1dp"
+    android:layout_toRightOf="@id/profile_pic_nav_header"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:text="First Name"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textSize="18sp"
+    android:textStyle="bold|italic" />
+
+    <!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:textSize="15sp"-->
+<!--            android:paddingTop="2dp"-->
+<!--            android:layout_below="@id/first_name_nav_header"-->
+<!--            android:layout_toRightOf="@id/profile_pic_nav_header"-->
+<!--            android:text="Email Address" />-->
+
+    </RelativeLayout>

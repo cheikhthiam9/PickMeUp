@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:id="@+id/received_package_id_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Package ID"
+            android:inputType="text"
+            android:maxLines="1" />
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/user_account_number_card_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="User Account Number"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLines="1" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/user_full_name_card_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="User Full Name"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLines="1" />-->
+
+
+        <TextView
+            android:id="@+id/received_package_description_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Package Description"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/postal_service_provider_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Postal Service Provider"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/online_shop_provider_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Online Shop Provider"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/received_date_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Received Date"
+            android:inputType="text"
+            android:maxLines="1" />
+
+
+        <TextView
+            android:id="@+id/package_condition_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Package Condition"
+            android:inputType="text"
+            android:maxLines="1" />
+
+
+        <TextView
+            android:id="@+id/received_package_length_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Length"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/received_width_package_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Width"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/received_height_package_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/received_weight_package_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="weight"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/select_package_checkbox"
+            android:text="Select package"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

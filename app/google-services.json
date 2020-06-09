@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "649906496929",
+    "firebase_url": "https://usafrica-83399.firebaseio.com",
+    "project_id": "usafrica-83399",
+    "storage_bucket": "usafrica-83399.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649906496929:android:313dafda8569ee511557e0",
+        "android_client_info": {
+          "package_name": "com.example.usafrica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649906496929-qbm48uh52m6huc4vbi1qe1s33rqoesb5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.usafrica",
+            "certificate_hash": "588c1754f85f263584475dd1294f3533698f44d5"
+          }
+        },
+        {
+          "client_id": "649906496929-ktpaq7flipfg5mvlv73vlns41rc2m7ua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqd4DF0pEEXQKvvxlZRTmmqwjy4T4nDVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649906496929-ktpaq7flipfg5mvlv73vlns41rc2m7ua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

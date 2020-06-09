@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--CURRENT ACTIVITY MAIN-->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        tools:context=".MainActivity"
+        >
+
+
+        <TextView
+            android:id="@+id/welcome_message"
+            android:text="@string/welcome_text"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relative_layout">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardUseCompatPadding="true"
+                android:layout_height="90dp"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:id="@+id/slogan"
+                    android:layout_gravity="center"
+                    android:text="@string/slogan_text"
+                    android:layout_width="wrap_content"
+                    android:textSize="19sp"
+                    android:layout_height="wrap_content"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/get_started_button"
+            android:text="@string/get_started_text"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+
+
+
+

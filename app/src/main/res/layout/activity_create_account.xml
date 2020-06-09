@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".CreateAccountActivity">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    >
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_acct_progress"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge"/>
+
+
+    <LinearLayout
+        android:id="@+id/account_login_form"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/first_name_account"
+            android:hint="@string/first_name_text"
+            android:inputType="text"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+        <AutoCompleteTextView
+            android:id="@+id/last_name_account"
+            android:hint="@string/last_name_text"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/street_address_account"
+            android:hint="Street Address"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <AutoCompleteTextView
+            android:id="@+id/city_address_account"
+            android:hint="City"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/state_address_account"
+            android:hint="State"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/zip_code_address_account"
+            android:hint="Zip Code"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/country_account"
+            android:layout_marginTop="16dp"
+            android:hint="@string/country_placeholder"
+            android:inputType="text"
+            android:textColorHint="@android:color/white"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/phone_number_account"
+            android:layout_marginTop="16dp"
+            android:hint="@string/phone_number_placeholder"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/email_account"
+            android:layout_marginTop="16dp"
+            android:hint="@string/email_placeholder"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/password_account"
+            android:layout_marginTop="16dp"
+            android:hint="@string/password_placeholder"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/retype_password_account"
+            android:layout_marginTop="16dp"
+            android:inputType="textPassword"
+            android:hint="@string/retype_password_placeholder"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/create_account_button_login"
+            android:text="@string/create_account_text"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>
