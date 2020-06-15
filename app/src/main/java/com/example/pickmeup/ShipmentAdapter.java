@@ -5,21 +5,56 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import util.PackageItemApi;
 
 public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ShipmentViewHolder> {
 
     private ArrayList<PackageItemApi> ShipmentList_;
+    //private ArrayList<PackageItemApi> ShipmentListFull_;
+
     private ArrayList<String> packageIdList = new ArrayList<>();
 
-    public static class ShipmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+//    @Override
+//    public Filter getFilter() {
+//        return shipmentFilter;
+//    }
+//    private Filter shipmentFilter = new Filter() {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence constraint) {
+//            List<PackageItemApi> filteredList = new ArrayList<>();
+//            if (constraint == null || constraint.length() == 0) {
+//                filteredList.addAll(ShipmentListFull_);
+//            } else {
+//                String filterPattern = constraint.toString().toLowerCase().trim();
+//                for (PackageItemApi item : ShipmentListFull_) {
+//                    if (item.getPackageId().toLowerCase().contains(filterPattern)) {
+//                        filteredList.add(item);
+//                    }
+//                }
+//            }
+//            FilterResults results = new FilterResults();
+//            results.values = filteredList;
+//            return results;
+//        }
+//        @Override
+//        protected void publishResults(CharSequence constraint, FilterResults results) {
+//            ShipmentList_.clear();
+//            ShipmentList_.addAll((List) results.values);
+//            notifyDataSetChanged();
+//        }
+//    };
+
+    public static class ShipmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         private TextView packageIdTextView;
         private TextView packageDescriptionTextView;
@@ -35,11 +70,13 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.Shipme
 
         SelectPackageClickListener selectPackageClickListener;
 
-        public void setSelectPackageClickListener(SelectPackageClickListener s) {
+        public void setSelectPackageClickListener(SelectPackageClickListener s)
+        {
             this.selectPackageClickListener = s;
         }
 
-        public ShipmentViewHolder(@NonNull View itemView) {
+        public ShipmentViewHolder(@NonNull View itemView)
+        {
             super(itemView);
 
             packageIdTextView = itemView.findViewById(R.id.received_package_id_card_view);
@@ -61,10 +98,13 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.Shipme
         {
             this.selectPackageClickListener.onSelectPackageClick(v, getLayoutPosition());
         }
+
     }
 
     public ShipmentAdapter(ArrayList<PackageItemApi> ShipmentList) {
+
         ShipmentList_ = ShipmentList;
+      //  ShipmentListFull_ = new ArrayList<>(ShipmentList);
     }
 
     @NonNull

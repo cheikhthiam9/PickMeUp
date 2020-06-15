@@ -38,8 +38,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
-
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar_dashboard);
         //Setting new action bar created in xml file
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);

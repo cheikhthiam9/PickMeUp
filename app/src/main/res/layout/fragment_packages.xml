@@ -14,14 +14,13 @@
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:text="My Shipments"/>
+        android:text="My Packages"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-
-        android:text="Request Package Delivery"
+        android:text="Pick up packages"
         android:id="@+id/request_package_delivery_button"
         android:layout_below="@id/recycler_view_shipment"/>
 

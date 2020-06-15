@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
 
         <TextView
             android:layout_width="match_parent"
@@ -25,6 +18,21 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:text="My Account "/>
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -158,47 +166,52 @@
         </androidx.cardview.widget.CardView>
 
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="5dp">-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <!--            <RelativeLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:text="Documents"/>
+        <!--                <TextView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:textSize="20sp"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    android:text="Documents"/>-->
 
-                <Button
-                    android:id="@+id/add_document_button_my_account"
-                    android:layout_width="129dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="278dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="Upload Documents" />
+        <!--                <Button-->
+        <!--                    android:id="@+id/add_document_button_my_account"-->
+        <!--                    android:layout_width="129dp"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_alignParentStart="true"-->
+        <!--                    android:layout_alignParentEnd="true"-->
+        <!--                    android:layout_marginStart="278dp"-->
+        <!--                    android:layout_marginEnd="4dp"-->
+        <!--                    android:text="Upload Documents" />-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/document_recycler_view_m_account"
-                    android:layout_width="match_parent"
-                    android:layout_below="@id/add_document_button_my_account"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:scrollbars="vertical"/>
+        <!--                <androidx.recyclerview.widget.RecyclerView-->
+        <!--                    android:id="@+id/document_recycler_view_m_account"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_below="@id/add_document_button_my_account"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:padding="4dp"-->
+        <!--                    android:scrollbars="vertical"/>-->
 
-            </RelativeLayout>
+        <!--            </RelativeLayout>-->
 
-        </androidx.cardview.widget.CardView>
+        <!--        </androidx.cardview.widget.CardView>-->
 
     </LinearLayout>
 
+
 </ScrollView>
+
+
+
+</LinearLayout>
 
 
 

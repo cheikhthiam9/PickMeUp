@@ -3,9 +3,14 @@ package com.example.pickmeup;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,16 +58,12 @@ public class ShipmentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_shipment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_packages, container, false);
         shipmentRecyclerView = rootView.findViewById(R.id.recycler_view_shipment);
         shipmentLayoutManager = new LinearLayoutManager(getActivity());
         shipmentRecyclerView.setLayoutManager(shipmentLayoutManager);
         shipmentRecyclerView.setHasFixedSize(true);
         shipmentAdapter = new ShipmentAdapter(shippingList);
-
-
-
-
 
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
@@ -104,6 +105,50 @@ public class ShipmentFragment extends Fragment {
         return rootView;
     }
 
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        inflater.inflate(R.menu.toolbar_menu, menu);
+//        MenuItem searchItem = menu.findItem(R.id.search);
+//        SearchView searchView = (SearchView) searchItem.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//
+//               // shipmentAdapter
+//                return false;
+//            }
+//        });
+//
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+
+    //    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        setHasOptionsMenu(true);
+//
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.toolbar_menu, menu);
+
+//        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                adapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
+//        return true;
+//    }
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onStart() {
@@ -122,7 +167,6 @@ public class ShipmentFragment extends Fragment {
                             //queryDocumentSnapshots contains data read from collection in our database as part of a query.
                             assert queryDocumentSnapshots != null;
                             if (!queryDocumentSnapshots.isEmpty()) {
-                                // final ArrayList<PackageItemApi> shippingList = new ArrayList<>();
 
                                 for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
 

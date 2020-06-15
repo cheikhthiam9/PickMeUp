@@ -3,26 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-
-
     <item
         android:id="@+id/search"
         android:title="Search"
         android:orderInCategory="100"
         android:icon="@drawable/ic_search"
         android:iconTint="@android:color/white"
-        app:showAsAction="always"
+        android:visible="true"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"
         />
-
-    <item
-        android:id="@+id/refresh"
-        android:title="Refresh"
-        android:orderInCategory="100"
-        android:iconTint="@android:color/white"
-        android:icon="@drawable/ic_refresh"
-        app:showAsAction="always"
-        />
-
-
 
 </menu>

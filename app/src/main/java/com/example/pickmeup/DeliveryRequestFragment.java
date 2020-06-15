@@ -54,7 +54,7 @@ public class DeliveryRequestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View rootView =  inflater.inflate(R.layout.fragment_delivery_request, container, false);
+        View rootView =  inflater.inflate(R.layout.fragment_pick_up_request, container, false);
 
         packagesRecyclerView = rootView.findViewById(R.id.recycler_view_delivery_request);
         packagesRecyclerView.setHasFixedSize(false);
