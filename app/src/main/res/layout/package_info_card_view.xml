@@ -46,30 +46,21 @@
             android:hint="Package Description"
             android:inputType="text" />
 
-        <TextView
-            android:id="@+id/postal_service_provider_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Postal Service Provider"
-            android:inputType="text"
-            android:maxLines="1" />
+<!--        <TextView-->
+<!--            android:id="@+id/postal_service_provider_card_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Postal Service Provider"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLines="1" />-->
 
-        <TextView
-            android:id="@+id/online_shop_provider_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Online Shop Provider"
-            android:inputType="text"
-            android:maxLines="1" />
-
-        <TextView
-            android:id="@+id/received_date_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Received Date"
-            android:inputType="text"
-            android:maxLines="1" />
-
+<!--        <TextView-->
+<!--            android:id="@+id/online_shop_provider_card_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Online Shop Provider"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLines="1" />-->
 
         <TextView
             android:id="@+id/package_condition_card_view"
@@ -79,6 +70,13 @@
             android:inputType="text"
             android:maxLines="1" />
 
+        <TextView
+            android:id="@+id/pick_up_date_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pick Up Date"
+            android:inputType="text"
+            android:maxLines="1" />
 
         <TextView
             android:id="@+id/received_package_length_card_view"

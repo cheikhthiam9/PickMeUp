@@ -64,13 +64,13 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.PackageV
     public void onBindViewHolder(@NonNull PackageAdapter.PackageViewHolder holder, int position) {
 
         final PackageItemApi currentShippingItem = ShipmentList_.get(position);
+      //  System.out.println(currentShippingItem.getPackageId()+ "        38294709172094712094809471209474901940171029");
+
 
         holder.packageIdTextView.setText("Package ID: " + currentShippingItem.getPackageId());
         holder.packageDescriptionTextView.setText("Package Description: " + currentShippingItem.getPackageDescription());
-        holder.postalServiceProviderTextView.setText("Postal Service Provider: " + currentShippingItem.getPostalServiceProvider());
-        holder.onlineShopProviderTextView.setText("Online Shop Provider: " + currentShippingItem.getOnlineShopProvider());
-        holder.receivedDateTextView.setText("Received Date: " + currentShippingItem.getReceivedDate());
         holder.packageConditionTextView.setText("Package Condition: " + currentShippingItem.getPackageCondition());
+        holder.pickUpDateTextView.setText("Pick Up Date: " + currentShippingItem.getPickUpDate());
         holder.packageLengthTextView.setText("Package Length: " + currentShippingItem.getPackageLength());
         holder.packageWidthTextView.setText("Package Width: " + currentShippingItem.getPackageWidth());
         holder.packageHeightTextView.setText("Package Height:" + currentShippingItem.getPackageHeight());
@@ -105,14 +105,13 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.PackageV
 
         private TextView packageIdTextView;
         private TextView packageDescriptionTextView;
-        private TextView postalServiceProviderTextView;
-        private TextView onlineShopProviderTextView;
-        private TextView receivedDateTextView;
         private TextView packageConditionTextView;
+        private TextView pickUpDateTextView;
         private TextView packageLengthTextView;
         private TextView packageWidthTextView;
         private TextView packageHeightTextView;
         private TextView packageWeightTextView;
+
         private CheckBox selectPackageCheckBox;
         private Button deletePackageButton;
 
@@ -130,10 +129,8 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.PackageV
 
             packageIdTextView = itemView.findViewById(R.id.received_package_id_card_view);
             packageDescriptionTextView = itemView.findViewById(R.id.received_package_description_card_view);
-            postalServiceProviderTextView = itemView.findViewById(R.id.postal_service_provider_card_view);
-            onlineShopProviderTextView = itemView.findViewById(R.id.online_shop_provider_card_view);
-            receivedDateTextView = itemView.findViewById(R.id.received_date_card_view);
             packageConditionTextView = itemView.findViewById(R.id.package_condition_card_view);
+            pickUpDateTextView = itemView.findViewById(R.id.pick_up_date_card_view);
             packageLengthTextView = itemView.findViewById(R.id.received_package_length_card_view);
             packageWidthTextView = itemView.findViewById(R.id.received_width_package_card_view);
             packageHeightTextView = itemView.findViewById(R.id.received_height_package_card_view);

@@ -24,6 +24,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+
+import util.UserApi;
 
 
 public class AddPackageFragment extends Fragment implements View.OnClickListener {
@@ -34,18 +37,17 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
     private FirebaseFirestore database = FirebaseFirestore.getInstance();
     private DocumentReference documentReference;
 
-    private AutoCompleteTextView userAccountNumberTextView;
-    private AutoCompleteTextView userFullNameTextView;
-    private AutoCompleteTextView packageIdTextView;
+
     private AutoCompleteTextView packageDescriptionTextView;
-    private AutoCompleteTextView postalServiceProviderTextView;
-    private AutoCompleteTextView onlineShopProviderTextView;
-    private AutoCompleteTextView receivedDateTextView;
     private AutoCompleteTextView packageConditionTextView;
+    private AutoCompleteTextView pickUpDateTextView;
     private AutoCompleteTextView packageLengthTextView;
     private AutoCompleteTextView packageWidthTextView;
     private AutoCompleteTextView packageHeightTextView;
     private AutoCompleteTextView packageWeightTextView;
+
+
+
 
     private Button addPackageButton;
     private Button resetButton;
@@ -58,18 +60,15 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
         // Initialize Firebase Authentication
         firebaseAuth = FirebaseAuth.getInstance();
 
-        userAccountNumberTextView = rootView.findViewById(R.id.user_account_number);
-        userFullNameTextView = rootView.findViewById(R.id.user_full_name);
-        packageIdTextView = rootView.findViewById(R.id.received_package_id);
         packageDescriptionTextView = rootView.findViewById(R.id.received_package_description);
-        postalServiceProviderTextView = rootView.findViewById(R.id.postal_service_provider);
-        onlineShopProviderTextView = rootView.findViewById(R.id.online_shop_provider);
-        receivedDateTextView = rootView.findViewById(R.id.received_date);
         packageConditionTextView = rootView.findViewById(R.id.package_condition);
+        pickUpDateTextView = rootView.findViewById(R.id.pick_up_date_add_fragment);
         packageLengthTextView = rootView.findViewById(R.id.received_package_length);
         packageWidthTextView = rootView.findViewById(R.id.received_width_package);
         packageHeightTextView = rootView.findViewById(R.id.received_height_package);
         packageWeightTextView = rootView.findViewById(R.id.received_weight_package);
+
+
         addPackageButton = rootView.findViewById(R.id.add_package_button);
         resetButton = rootView.findViewById(R.id.reset_request);
 
@@ -101,33 +100,24 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.add_package_button:
 
-                if ((!TextUtils.isEmpty(userAccountNumberTextView.getText().toString())) &&
-                        (!TextUtils.isEmpty(userFullNameTextView.getText().toString())) &&
-                        (!TextUtils.isEmpty(packageIdTextView.getText().toString())) &&
+                if (
                         (!TextUtils.isEmpty(packageDescriptionTextView.getText().toString())) &&
-                        (!TextUtils.isEmpty(postalServiceProviderTextView.getText().toString())) &&
-                        (!TextUtils.isEmpty(onlineShopProviderTextView.getText().toString())) &&
-                        (!TextUtils.isEmpty(receivedDateTextView.getText().toString()) &&
+                        (!TextUtils.isEmpty(pickUpDateTextView.getText().toString())) &&
                                 (!TextUtils.isEmpty(packageLengthTextView.getText().toString())) &&
                                 !TextUtils.isEmpty(packageWidthTextView.getText().toString()) &&
                                 !TextUtils.isEmpty(packageHeightTextView.getText().toString()) &&
                                 !TextUtils.isEmpty(packageWeightTextView.getText().toString()) &&
-                                !TextUtils.isEmpty(packageConditionTextView.getText().toString()))
+                                !TextUtils.isEmpty(packageConditionTextView.getText().toString())
                 )
                 {
                     addPackage(
-                            userAccountNumberTextView.getText().toString().trim(),
-                            userFullNameTextView.getText().toString().trim(),
-                            packageIdTextView.getText().toString().trim(),
                             packageDescriptionTextView.getText().toString().trim(),
-                            postalServiceProviderTextView.getText().toString().trim(),
-                            onlineShopProviderTextView.getText().toString().trim(),
-                            receivedDateTextView.getText().toString().trim(),
+                            pickUpDateTextView.getText().toString().trim(),
+                            packageConditionTextView.getText().toString().trim(),
                             packageLengthTextView.getText().toString().trim(),
                             packageWidthTextView.getText().toString().trim(),
                             packageHeightTextView.getText().toString().trim(),
-                            packageWeightTextView.getText().toString().trim(),
-                            packageConditionTextView.getText().toString().trim()
+                            packageWeightTextView.getText().toString().trim()
                             );
 
                     PackagesFragment packagesFragment = new PackagesFragment();
@@ -155,11 +145,9 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private void addPackage(String userAccountNumber, String userFullName,
-                            String packageID, String pDescription,
-                            String postalProvider, String onlineProvider,
-                            String receivedDate, String pLength, String pWidth,
-                            String pHeight, String pWeight, String pCondition) {
+    private void addPackage(String pDescription, String pickUpDate,String pCondition,
+                            String pLength, String pWidth,
+                            String pHeight, String pWeight) {
 
 
         currentUser = firebaseAuth.getCurrentUser();
@@ -167,19 +155,21 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
         final String currentUserId = currentUser.getUid();
         Map<String, Object> data = new HashMap<>();
 
+        String packageID = UUID.randomUUID().toString();
+
+        System.out.println(packageID);
+
         data.put("User Id", currentUserId);
-        data.put("User Account Number", userAccountNumber);
-        data.put("User Full Name", userFullName);
+        data.put("User Account Number", UserApi.getInstance().getAccountNumber());
         data.put("Package ID", packageID);
         data.put ("Package Description", pDescription);
-        data.put("Postal Service Provider", postalProvider);
-        data.put("Online Shop Provider", onlineProvider);
-        data.put("Received Date", receivedDate);
+        data.put("Package Condition", pCondition);
+        data.put("Pick Up Date", pickUpDate);
         data.put("Package Length (inches)", pLength);
         data.put("Package Width (inches)", pWidth);
         data.put("Package Height (inches)", pHeight);
         data.put("Package Weight (LBS)", pWeight);
-        data.put("Package Condition", pCondition);
+
 
         documentReference = database.collection("Packages").document();
         documentReference.set(data)

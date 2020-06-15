@@ -33,16 +33,11 @@ import util.UserApi;
 
 public class PackagesFragment extends Fragment {
 
-
-
     private RecyclerView shipmentRecyclerView;
     private RecyclerView.Adapter shipmentAdapter;
     private RecyclerView.LayoutManager shipmentLayoutManager;
 
     ArrayList<PackageItemApi> shippingList = new ArrayList<>();
-    ArrayList<String> listPackageIdSelected = new ArrayList<>();
-
-
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -110,7 +105,59 @@ public class PackagesFragment extends Fragment {
         return rootView;
     }
 
-//    @Override
+
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onStart() {
+        currentUser = firebaseAuth.getCurrentUser();
+        firebaseAuth.addAuthStateListener(authStateListener);
+
+        if (currentUser != null)
+        {
+            collectionReference.whereEqualTo("User Account Number", UserApi.getInstance().getAccountNumber())
+                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                            if (e != null) {
+                                return;
+                            }
+                            //queryDocumentSnapshots contains data read from collection in our database as part of a query.
+                            assert queryDocumentSnapshots != null;
+                            if (!queryDocumentSnapshots.isEmpty()) {
+
+                                for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+
+                                    shippingList.add
+                                            (
+                                                    new PackageItemApi
+                                                            (
+                                                                    snapshot.getString("Package ID"),
+                                                                    snapshot.getString("Package Description"),
+                                                                    snapshot.getString("Package Condition"),
+                                                                    snapshot.getString("Pick Up Date"),
+                                                                    snapshot.getString("Package Length (inches)"),
+                                                                    snapshot.getString("Package Width (inches)"),
+                                                                    snapshot.getString("Package Height (inches)"),
+                                                                    snapshot.getString("Package Weight (LBS)")
+                                                            ));
+                                }
+                                shipmentRecyclerView.setHasFixedSize(true);
+                                shipmentAdapter = new PackageAdapter(getContext(), shippingList);
+                                shipmentRecyclerView.setAdapter(shipmentAdapter);
+                                shipmentRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                            }
+                        }
+                    });
+
+
+        } else {
+            // no user yet
+        }
+        super.onStart();
+    }
+    //    @Override
 //    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
 //        inflater.inflate(R.menu.toolbar_menu, menu);
 //        MenuItem searchItem = menu.findItem(R.id.search);
@@ -153,59 +200,4 @@ public class PackagesFragment extends Fragment {
 //        });
 //        return true;
 //    }
-
-    @SuppressLint("SetTextI18n")
-    @Override
-    public void onStart() {
-        currentUser = firebaseAuth.getCurrentUser();
-        firebaseAuth.addAuthStateListener(authStateListener);
-
-        if (currentUser != null)
-        {
-            collectionReference.whereEqualTo("User Account Number", UserApi.getInstance().getAccountNumber())
-                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            if (e != null) {
-                                return;
-                            }
-                            //queryDocumentSnapshots contains data read from collection in our database as part of a query.
-                            assert queryDocumentSnapshots != null;
-                            if (!queryDocumentSnapshots.isEmpty()) {
-
-                                for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
-
-                                    shippingList.add
-                                            (
-                                                    new PackageItemApi
-                                                            (
-                                                                    //  snapshot.getString("User Account Number"),
-                                                                    //  snapshot.getString("User Full Name"),
-                                                                    snapshot.getString("Package ID"),
-                                                                    snapshot.getString("Package Description"),
-                                                                    snapshot.getString("Postal Service Provider"),
-                                                                    snapshot.getString("Online Shop Provider"),
-                                                                    snapshot.getString("Received Date"),
-                                                                    snapshot.getString("Received Date"),
-                                                                    snapshot.getString("Package Length (inches)"),
-                                                                    snapshot.getString("Package Width (inches)"),
-                                                                    snapshot.getString("Package Height (inches)"),
-                                                                    snapshot.getString("Package Weight (LBS)")
-                                                            ));
-                                }
-                                shipmentRecyclerView.setHasFixedSize(true);
-                                shipmentAdapter = new PackageAdapter(getContext(), shippingList);
-                                shipmentRecyclerView.setAdapter(shipmentAdapter);
-                                shipmentRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-                            }
-                        }
-                    });
-
-
-        } else {
-            // no user yet
-        }
-        super.onStart();
-    }
 }

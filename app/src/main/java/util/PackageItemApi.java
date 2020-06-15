@@ -11,6 +11,7 @@ public class PackageItemApi extends Application {
     private String userAccountNumber;
     private String userFullName;
     private String packageId;
+    private String pickUpDate;
     private String packageDescription;
     private String postalServiceProvider;
     private String onlineShopProvider;
@@ -24,6 +25,25 @@ public class PackageItemApi extends Application {
 
     public ArrayList<String> getSelectPackageList() {
         return selectPackageList;
+    }
+
+    public PackageItemApi(String packageId, String packageDescription, String packageCondition, String pickUpDate,  String packageLength, String packageWidth, String packageHeight, String packageWeight) {
+        this.packageId = packageId;
+        this.pickUpDate = pickUpDate;
+        this.packageDescription = packageDescription;
+        this.packageCondition = packageCondition;
+        this.packageLength = packageLength;
+        this.packageWidth = packageWidth;
+        this.packageHeight = packageHeight;
+        this.packageWeight = packageWeight;
+    }
+
+    public String getPickUpDate() {
+        return pickUpDate;
+    }
+
+    public void setPickUpDate(String pickUpDate) {
+        this.pickUpDate = pickUpDate;
     }
 
     public void setSelectPackageList(ArrayList<String> selectPackageList) {

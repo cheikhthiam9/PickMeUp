@@ -15,7 +15,8 @@
         android:padding="10dp"
         android:gravity="center"
         android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         android:text="Add a Package"/>
 
 
@@ -53,29 +54,29 @@
                         android:layout_height="wrap_content"
                         android:text="Package Information" />
 
-                    <AutoCompleteTextView
-                        android:id="@+id/user_account_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="User Account Number"
-                        android:inputType="text"
-                        android:maxLines="1" />
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/user_account_number"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="User Account Number"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1" />-->
 
-                    <AutoCompleteTextView
-                        android:id="@+id/user_full_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="User Full Name"
-                        android:inputType="text"
-                        android:maxLines="1" />
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/user_full_name"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="User Full Name"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1" />-->
 
-                    <AutoCompleteTextView
-                        android:id="@+id/received_package_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Package ID"
-                        android:inputType="text"
-                        android:maxLines="1" />
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/received_package_id"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Package ID"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1" />-->
 
                     <AutoCompleteTextView
                         android:id="@+id/received_package_description"
@@ -83,30 +84,6 @@
                         android:layout_height="wrap_content"
                         android:hint="Package Description"
                         android:inputType="text" />
-
-                    <AutoCompleteTextView
-                        android:id="@+id/postal_service_provider"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Postal Service Provider"
-                        android:inputType="text"
-                        android:maxLines="1" />
-
-                    <AutoCompleteTextView
-                        android:id="@+id/online_shop_provider"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Online Shop Provider"
-                        android:inputType="text"
-                        android:maxLines="1" />
-
-                    <AutoCompleteTextView
-                        android:id="@+id/received_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Received Date"
-                        android:inputType="text"
-                        android:maxLines="1" />
 
 
                     <AutoCompleteTextView
@@ -116,6 +93,39 @@
                         android:hint="Package Condition"
                         android:inputType="text"
                         android:maxLines="1" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/pick_up_date_add_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Pick Up Date"
+                        android:inputType="text" />
+
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/postal_service_provider"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Postal Service Provider"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1" />-->
+
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/online_shop_provider"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Online Shop Provider"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1" />-->
+
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/received_date"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Received Date"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1" />-->
+
+
 
 
                     <AutoCompleteTextView
@@ -146,7 +156,7 @@
                         android:id="@+id/received_weight_package"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="weight"
+                        android:hint="Weight"
                         android:inputType="text"
                         android:maxLines="1" />
 
