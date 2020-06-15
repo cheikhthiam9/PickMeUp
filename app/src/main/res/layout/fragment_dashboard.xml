@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
    >
 
@@ -16,8 +16,7 @@
         android:textSize="22sp"
         android:padding="10dp"
         android:gravity="center"
-        android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         android:text="@string/dashboard_text"
         />
@@ -72,6 +71,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentEnd="true"
                         android:background="@android:color/transparent"
+                        android:textColor="@color/colorPrimary"
                         android:layout_marginStart="299dp"
                         android:layout_marginEnd="1dp"
                         android:drawableStart="@drawable/ic_edit"
@@ -102,6 +102,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
+                        android:textColor="@color/colorPrimary"
+
                         android:textStyle="bold"
                         android:paddingTop="10dp"
                         android:text="Most Recent Package Added" />
@@ -237,6 +239,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:textStyle="bold|italic"
+                        android:textColor="@color/colorPrimary"
                         android:background="@android:color/transparent"
                         android:text="Add a new package" />
 
@@ -249,6 +252,7 @@
                         android:gravity="center"
                         android:visibility="gone"
                         android:textStyle="bold|italic"
+                        android:textColor="@color/colorPrimary"
                         android:background="@android:color/transparent"
                         android:text="Add more packages" />
 

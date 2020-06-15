@@ -3,14 +3,10 @@ package com.example.pickmeup;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +31,7 @@ import java.util.ArrayList;
 import util.PackageItemApi;
 import util.UserApi;
 
-public class ShipmentFragment extends Fragment {
+public class PackagesFragment extends Fragment {
 
 
 
@@ -44,7 +40,8 @@ public class ShipmentFragment extends Fragment {
     private RecyclerView.LayoutManager shipmentLayoutManager;
 
     ArrayList<PackageItemApi> shippingList = new ArrayList<>();
-    ArrayList<String> selection = new ArrayList<>();
+    ArrayList<String> listPackageIdSelected = new ArrayList<>();
+
 
 
     private FirebaseAuth firebaseAuth;
@@ -63,28 +60,36 @@ public class ShipmentFragment extends Fragment {
         shipmentLayoutManager = new LinearLayoutManager(getActivity());
         shipmentRecyclerView.setLayoutManager(shipmentLayoutManager);
         shipmentRecyclerView.setHasFixedSize(true);
-        shipmentAdapter = new ShipmentAdapter(shippingList);
+        shipmentAdapter = new PackageAdapter(getContext(), shippingList);
 
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
 
         requestPackageDeliveryButton = rootView.findViewById(R.id.request_package_delivery_button);
 
-        requestPackageDeliveryButton.setOnClickListener(new View.OnClickListener() {
+        requestPackageDeliveryButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
 
-                selection = PackageItemApi.getInstance().getSelectPackageList();
 
-                FragmentManager fragmentManager = getFragmentManager();
-                assert fragmentManager != null;
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                if (PackageItemApi.getInstance().getSelectPackageList() != null)
+                {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    assert fragmentManager != null;
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                DeliveryRequestFragment deliveryRequestFragment = new DeliveryRequestFragment();
-                fragmentTransaction.replace(R.id.fragment_container, deliveryRequestFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                    DeliveryRequestFragment deliveryRequestFragment = new DeliveryRequestFragment();
+                    fragmentTransaction.replace(R.id.fragment_container, deliveryRequestFragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
 
+                } else {
+                    Toast.makeText(getContext(),
+                            "You need to select at least one package.",
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
 
             }
 
@@ -189,7 +194,7 @@ public class ShipmentFragment extends Fragment {
                                                             ));
                                 }
                                 shipmentRecyclerView.setHasFixedSize(true);
-                                shipmentAdapter = new ShipmentAdapter(shippingList);
+                                shipmentAdapter = new PackageAdapter(getContext(), shippingList);
                                 shipmentRecyclerView.setAdapter(shipmentAdapter);
                                 shipmentRecyclerView.setItemAnimator(new DefaultItemAnimator());
 

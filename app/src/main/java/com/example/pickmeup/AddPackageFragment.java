@@ -113,7 +113,8 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
                                 !TextUtils.isEmpty(packageHeightTextView.getText().toString()) &&
                                 !TextUtils.isEmpty(packageWeightTextView.getText().toString()) &&
                                 !TextUtils.isEmpty(packageConditionTextView.getText().toString()))
-                ){
+                )
+                {
                     addPackage(
                             userAccountNumberTextView.getText().toString().trim(),
                             userFullNameTextView.getText().toString().trim(),
@@ -128,6 +129,12 @@ public class AddPackageFragment extends Fragment implements View.OnClickListener
                             packageWeightTextView.getText().toString().trim(),
                             packageConditionTextView.getText().toString().trim()
                             );
+
+                    PackagesFragment packagesFragment = new PackagesFragment();
+                    fragmentTransaction.replace(R.id.fragment_container, packagesFragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+
                 } else {
                     //When user presses the button with a missing value
                     Toast.makeText(getContext(),

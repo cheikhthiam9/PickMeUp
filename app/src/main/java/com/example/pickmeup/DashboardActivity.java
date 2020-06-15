@@ -93,7 +93,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.shipment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ShipmentFragment()).commit();
+                        new PackagesFragment()).commit();
                 break;
 //            case R.id.request:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

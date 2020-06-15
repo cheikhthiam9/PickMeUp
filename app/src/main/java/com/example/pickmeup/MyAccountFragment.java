@@ -58,7 +58,6 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     private EditText countryTextView;
 
     private Button addAddressButton;
-    private Button addDocumentButton;
     private Button editProfileButton;
     private Button changePasswordButton;
 
@@ -148,7 +147,6 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
             phoneNumberTextView.setText("Phone Number: " + UserApi.getInstance().getPhoneNumberUser());
             statusTextView.setText("Status: " + UserApi.getInstance().getStatus());
             accountNumberTextView.setText("Account Number: " + UserApi.getInstance().getAccountNumber());
-            System.out.println("Before adding in onStart: " + addressList.size());
             addressList.add
                     (new UserApi
                             (
@@ -159,7 +157,6 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
                                     UserApi.getInstance().getCountryUser()
                             )
                     );
-            System.out.println("After adding in onStart: " + addressList.size());
 
 
         }
@@ -222,7 +219,8 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
                                 !cityTextView.getText().toString().trim().isEmpty() &&
                                 !zipCodeTextView.getText().toString().trim().isEmpty() &&
                                 !stateTextView.getText().toString().trim().isEmpty() &&
-                                !countryTextView.getText().toString().trim().isEmpty()) {
+                                !countryTextView.getText().toString().trim().isEmpty())
+                        {
 
 
                             addressList.add
@@ -236,7 +234,6 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
                                             )
                                     );
 
-                            System.out.println("After adding in onCreate: " + addressList.size());
 
                             if (addressList.size() >= 1) {
                                 currentUser = firebaseAuth.getCurrentUser();
@@ -264,6 +261,40 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
 
+                                    }
+                                });
+                            }
+
+                            if (addressList.size() == 1 ) {
+                                String streetAddress = streetAddressTextView.getText().toString();
+                                String city = cityTextView.getText().toString();
+                                String zipCode = zipCodeTextView.getText().toString();
+                                String state = stateTextView.getText().toString();
+                                String country = countryTextView.getText().toString();
+
+
+                                Map<String, Object> data_ = new HashMap<>();
+                                data_.put("street address", streetAddress);
+                                data_.put("city", city);
+                                data_.put("zip code", zipCode);
+                                data_.put("state", state);
+                                data_.put("country", country);
+                                System.out.println(data_);
+
+                                String currentDocId = UserApi.getInstance().getDocumentId();
+                                documentReference = database.collection("Users").document(currentDocId);
+                                documentReference.update(data_).addOnSuccessListener(new OnSuccessListener<Void>()
+                                {
+
+                                    @Override
+                                    public void onSuccess(Void aVoid)
+                                    {
+                                        System.out.println("work");
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        System.out.println("Did not work");
                                     }
                                 });
                             }

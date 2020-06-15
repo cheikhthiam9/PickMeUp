@@ -112,11 +112,31 @@
             android:inputType="text"
             android:maxLines="1" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
+
+
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/select_package_checkbox"
-            android:text="Select package"/>
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/select_package_checkbox"
+                android:textSize="15dp"
+                android:text="Select package"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:id="@+id/delete_package_my_packages"
+                android:background="@android:color/transparent"
+                android:drawableStart="@android:drawable/ic_delete"
+                />
+
+        </TableRow>
 
     </LinearLayout>
 

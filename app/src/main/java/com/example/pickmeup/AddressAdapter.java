@@ -10,10 +10,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.common.util.JsonUtils;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -22,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import util.UserApi;
 
@@ -46,7 +52,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
 
 
 
-    public AddressAdapter(Context context, ArrayList<UserApi> addressList) {
+    AddressAdapter(Context context, ArrayList<UserApi> addressList) {
         this.context = context;
         this.addressList_ = addressList;
     }
@@ -68,8 +74,6 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
 
         UserApi currentAddress = addressList_.get(position);
 
-
-
         holder.streetAddressTextView.setText(currentAddress.getStreetAddressUser());
         holder.cityTextView.setText(currentAddress.getCityUser());
         holder.zipCodeTextView.setText(currentAddress.getZipCodeUser());
@@ -82,7 +86,6 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
         return addressList_.size();
     }
 
-
     public class AddressViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView streetAddressTextView;
@@ -92,11 +95,6 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
         public TextView countryTextView;
         public Button editButton;
         public Button deleteButton;
-
-
-
-
-
 
         public AddressViewHolder(@NonNull View itemView, Context ctx) {
             super(itemView);
@@ -148,9 +146,48 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
                     break;
                 case R.id.delete_address_my_account:
                     deleteAddress();
+
                     break;
             }
 
+        }
+
+        private void checkAddressPosition()
+        {
+            if (addressList_.size() == 1 )
+            {
+                String streetAddress = streetAddressTextView.getText().toString();
+                String city = cityTextView.getText().toString();
+                String zipCode = zipCodeTextView.getText().toString();
+                String state = stateTextView.getText().toString();
+                String country = countryTextView.getText().toString();
+
+
+                Map<String, Object> data_ = new HashMap<>();
+                data_.put("street address", streetAddress);
+                data_.put("city", city);
+                data_.put("zip code", zipCode);
+                data_.put("state", state);
+                data_.put("country", country);
+                System.out.println(data_);
+
+                String currentDocId = UserApi.getInstance().getDocumentId();
+                documentReference = database.collection("Users").document(currentDocId);
+                documentReference.update(data_).addOnSuccessListener(new OnSuccessListener<Void>()
+                {
+
+                    @Override
+                    public void onSuccess(Void aVoid)
+                    {
+                        System.out.println("work");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("Did not work");
+                    }
+                });
+            }
         }
 
         private void editAddress(final UserApi userAddress) {
@@ -194,7 +231,8 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
                                     !cityTextView_.getText().toString().trim().isEmpty() &&
                                     !zipCodeTextView_.getText().toString().trim().isEmpty() &&
                                     !stateTextView_.getText().toString().trim().isEmpty() &&
-                                    !countryTextView_.getText().toString().trim().isEmpty()) {
+                                    !countryTextView_.getText().toString().trim().isEmpty())
+                            {
 
                                 userAddress.setStreetAddressUser(streetAddressTextView_.getText().toString());
                                 userAddress.setCityUser(cityTextView_.getText().toString());
@@ -202,6 +240,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
                                 userAddress.setStateUser(stateTextView_.getText().toString());
                                 userAddress.setCountryUser(countryTextView_.getText().toString());
                                 notifyItemChanged(getAdapterPosition(), userAddress);
+                                checkAddressPosition();
 
 
                             } else {
@@ -244,6 +283,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
                         addressList_.remove(getAdapterPosition());
                         notifyItemRemoved(getAdapterPosition());
                         dialog.dismiss();
+                        checkAddressPosition();
                     }
                 });
                 noButton.setOnClickListener(new View.OnClickListener() {
@@ -256,47 +296,12 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
 
 
             } else {
-                System.out.println("You only have one address in file.");
+                Toast.makeText(context,
+                        "You are not allowed to delete the only address in file." + addressList_.size(),
+                        Toast.LENGTH_LONG)
+                        .show();
             }
-//
-//            if (addressList_.size() == 1 )
-//            {
-//                System.out.println("You cannot erase the only address in file");
-//            }
-//
-//            if (getAdapterPosition() == 0 )
-//            {
-//
-//                String streetAddress = streetAddressTextView.getText().toString();
-//                String city = cityTextView.getText().toString();
-//                String zipCode = zipCodeTextView.getText().toString();
-//                String state = stateTextView.getText().toString();
-//                String country = countryTextView.getText().toString();
-//
-//
-//                Map<String, Object> data_ = new HashMap<>();
-//                data_.put("street address", streetAddress);
-//                data_.put("city", city);
-//                data_.put("zip code", zipCode);
-//                data_.put("state", state);
-//                data_.put("country", country);
-//
-//                String currentDocId = UserApi.getInstance().getDocumentId();
-//                documentReference = database.collection("Users").document(currentDocId);
-//                documentReference.update(data_).addOnSuccessListener(new OnSuccessListener<Void>()
-//                {
-//                    @Override
-//                    public void onSuccess(Void aVoid)
-//                    {
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                    }
-//                });
-//
-//            }
+
 
         }
     }

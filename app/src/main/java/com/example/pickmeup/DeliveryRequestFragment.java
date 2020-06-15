@@ -119,12 +119,7 @@ public class DeliveryRequestFragment extends Fragment {
 
 
                                     for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
-//                                        System.out.println(snapshot.getString("Package ID"));
-//                                        System.out.println(snapshot.getString("Package Description"));
-//                                        System.out.println(snapshot.getString("Package Length (inches)"));
-//                                        System.out.println(snapshot.getString("Package Width (inches)"));
-//                                        System.out.println(snapshot.getString("Package Height (inches)"));
-//                                        System.out.println(snapshot.getString("Package Weight (LBS)"));
+
 
                                         packageSelectedList.add
                                                 (
